@@ -27,13 +27,13 @@ namespace NetCsharpWinFormsCrestNuls
             if (b == "X")
             {
                 MessageBox.Show("Выиграли крестики", "Крестики-Нолики", MessageBoxButtons.OK);
-                this.Close();
+                isFinish = true;
                 return;
             }
             else if (b == "O")
                 {
                     MessageBox.Show("Выиграли нолики", "Крестики-Нолики", MessageBoxButtons.OK);
-                this.Close();
+                isFinish = true;
                 return;
                 }
            
@@ -42,7 +42,16 @@ namespace NetCsharpWinFormsCrestNuls
         private void button10_Click(object sender, EventArgs e)
         {
              isStarted = true;
-            
+            isFinish = false;  
+
+           
+            foreach (var button in buttons)
+            {
+                button.butt.Image = null; 
+                button.isOpen = false;     
+                button.who = "";           
+            }
+
             if (checkBox1.Checked)
             {
                 Bitmap img = new Bitmap("X.jpg");
@@ -171,7 +180,7 @@ namespace NetCsharpWinFormsCrestNuls
                     Check(mybutton3);
                     return;
                 }
-                isFinish = true;
+                
 
             }
         }
